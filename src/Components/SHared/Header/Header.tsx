@@ -2,6 +2,7 @@ import { MdOutlineHome, MdDashboard } from "react-icons/md";
 import { FaScrewdriverWrench, FaUser, FaUserClock } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 import Login from "../../Login/Login/Login";
+import useAuth from "../../Hooks/useAuth";
 
 
 type Header ={
@@ -10,7 +11,7 @@ type Header ={
 
 
 const Header = () => {
-const user=null;
+const { user, logOut } =useAuth();
 
 
   return (
@@ -62,14 +63,14 @@ const user=null;
           </NavLink>
                   </div>
         {/* ------------------accounts details--------------------- */}
-        <div>
+        <div className=" flex gap-3 items-center">
 
         <div className={`${user?"block":"hidden"}`}>
               <div >
               <div className="avatar">
-                <div className="w-12 md:w-14 md:ml-10  rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <div className="w-10 md:w-14   rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               {
-                user?<img src={user?.photoURL}/>: <FaUser/>
+                user?.photoURL?<img src={user?.photoURL}/>: <FaUser/>
                 
               }
                
@@ -82,14 +83,14 @@ const user=null;
           {!user ? (
               <div>
                 <Link to={"/login"}>
-                  <button className="btn btn-info hover:bg-blue-500 hover:text-white text-yellow-50 md:ml-10">
+                  <button className="btn border-2 bg-white border-white hover:border-blue-500  text-blue-500 ">
                     {" "}
                     Sign in
                   </button>
                 </Link>
               </div>
             ) : (
-              <button onClick={console.log('out')} className="btn btn-info hover:bg-blue-500 hover:text-white text-yellow-50 md:ml-10">
+              <button onClick={logOut} className="btn border-2 bg-white border-white hover:border-blue-500  text-blue-500 ">
                 {" "}
                 Sign Out
               </button>
