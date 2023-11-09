@@ -1,7 +1,8 @@
 import { MdOutlineHome, MdDashboard } from "react-icons/md";
 import { FaScrewdriverWrench, FaUser, FaUserClock } from "react-icons/fa6";
+import { MdEngineering } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
-import Login from "../../Login/Login/Login";
+
 import useAuth from "../../Hooks/useAuth";
 
 
@@ -30,7 +31,7 @@ const { user, logOut } =useAuth();
           </a>
         </div>
         {/* ----------navigation and routes------------------- */}
-        <div className="flex gap-3 md:gap-5">
+        <div className="flex gap-3 md:gap-3">
           <NavLink
             to={"/"}
             className={({ isActive }) =>
@@ -59,7 +60,7 @@ const { user, logOut } =useAuth();
                 : "text-blue-500 font-normal text-base md:text-xl px-5 flex items-center gap-2 duration-300"
             }
           >
-            <FaScrewdriverWrench size={25} /> Register as worker
+            <MdEngineering size={25} /> Register as worker
           </NavLink>
                   </div>
         {/* ------------------accounts details--------------------- */}
